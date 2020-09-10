@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
+    binding.pry
     #takes user params to sign in
     #if user already exists, redirects to login
     #if user attempts to login with empty params, raise error and redirect to signup
