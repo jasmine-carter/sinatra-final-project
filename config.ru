@@ -6,3 +6,4 @@ end
 #mount other controllers with use
 use Rack::MethodOverride
 run ApplicationController
+use UsersController
