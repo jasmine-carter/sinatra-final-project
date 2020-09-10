@@ -17,4 +17,9 @@ Console.create(name: "Playston", user_id: jamblin.id, year_purchased: 1995, year
 
 #AR to pre-associate data:
 
-chris.games.create(name: "Skyrim", year_purchased: 2011)
+chris.games.create(name: "Skyrim")
+
+jamblin_game = jamblin.games.build(name: "Fall Guys")
+jamblin_game.save
+
+#to play with this date, use tux
