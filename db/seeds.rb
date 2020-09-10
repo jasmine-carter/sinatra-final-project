@@ -7,8 +7,8 @@ chris =User.create(password: "password", email: "chris@flatiron.com", username: 
 
 
 #create some games
-Game.create(name: "Tony Hawk Pro Skater 2", console_id: 2)
-Game.create(name: "The Last of Us 2", console_id)
+Game.create(name: "Tony Hawk Pro Skater 2")
+Game.create(name: "The Last of Us 2")
 #create some consoles
 Console.create(name: "Playstation 4", user_id: jamblin.id, year_purchased: 2014, year_released: 2013)
 Console.create(name: "Playstation 4", user_id: chris.id, year_purchased: 2013, year_released: 2013)
