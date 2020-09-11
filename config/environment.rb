@@ -1,5 +1,6 @@
 ENV['SINATRA_ENV'] ||= "development"
 
+require 'sinatra/base'
 require 'bundler/setup'
 require 'rack-flash'
 
