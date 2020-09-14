@@ -17,7 +17,15 @@ class ConsolesController < ApplicationController
   end
 
   post '/consoles/new' do
-
+    binding.pry
+    if params.value?("") || params.value?(" ") || params.value?(nil)
+      flash[:message] = "Hold up there friend, please create a console with a name, release date, and year purchased!"
+      redirect "/consoles/new"
+    else
+      @console = Console.new(name: params[:name], year_released: params[:year_released], year_purchased: params[:year_purchased], user_id: session[:user_id])
+      @console.save
+      redirect '/consoles'
+    end
   end
-  
+
 end
