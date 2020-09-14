@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     flash[:notice] = "Oh hai"
-    erb :welcome
+    erb :about
   end
 
   helpers

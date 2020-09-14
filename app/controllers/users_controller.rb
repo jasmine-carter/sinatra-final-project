@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     #renders user signup ERB if not logged in, else redirects logged in user to their profile page
     if session[:user_id] == nil
       erb :'users/signup'
-    else redirect "/users/#{sesssion[:user_id]}/show"
+    else redirect "/users/#{session[:user_id]}/show"
+    end
   end
 
   post '/signup' do
@@ -30,6 +31,25 @@ class UsersController < ApplicationController
     erb :'users/login'
   end
 
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+    if @user.id != nil && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}/show"
+    else
+      flash[:message] = "Your username or password is incorrect."
+      redirect "/signup"
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect "/login"
+    else
+      redirect "/"
+    end
+  end
 
   get '/users/:id/show' do
     erb :'users/show'
