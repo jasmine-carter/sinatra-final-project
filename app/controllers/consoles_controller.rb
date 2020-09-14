@@ -7,7 +7,12 @@ class ConsolesController < ApplicationController
   #allows you to edit a console owned by user
 
   get '/consoles' do
-    erb :'consoles/show'
+    #don't allow a non logged in user to view this page.
+    if logged_in?
+      erb :'consoles/show'
+    else
+      redirect '/users/signup'
+    end
     #will show all consoles by user
     #will have links to create consoles
   end
@@ -17,7 +22,6 @@ class ConsolesController < ApplicationController
   end
 
   post '/consoles/new' do
-    binding.pry
     if params.value?("") || params.value?(" ") || params.value?(nil)
       flash[:message] = "Hold up there friend, please create a console with a name, release date, and year purchased!"
       redirect "/consoles/new"

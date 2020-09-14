@@ -1,2 +1,13 @@
-<h1>here is the console show view </h1>
-Under construction, please hold. 
+<h2>Hi, <%= current_user.username %> </h2>
+#if user has consoles, list below, else show "it looks like you have no consoles, why don't you add one here"
+
+<% if current_user.consoles != []%>
+  <% Console.all.each do |c| %>
+    <% if c.user_id == current_user.id %>
+      <li><%= c.name%> </li>
+  <% else %>
+  <p>It looks like you don't have any consoles. Why don't you add one?</p>
+  <a href="/consoles/new">
+  <% end %>
+  <% end %>
+  <% end %>
