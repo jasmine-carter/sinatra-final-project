@@ -6,8 +6,10 @@ class UsersController < ApplicationController
   use Rack::Flash
 
   get '/signup' do
-    #renders user signup ERB
-    erb :'users/signup'
+    #renders user signup ERB if not logged in, else redirects logged in user to their profile page
+    if session[:user_id] == nil
+      erb :'users/signup'
+    else redirect "/users/#{sesssion[:user_id]}/show"
   end
 
   post '/signup' do
@@ -16,20 +18,20 @@ class UsersController < ApplicationController
       flash[:message] = "Please register with a Username, Email, and Password"
       redirect "/signup"
     else
+      #add a check to see if user already exists, and if they do, redirect to login
       @user = User.new(username: params["username"], email: params["email"], password: params["password"])
       @user.save
       session[:user_id] = @user.id
-      binding.pry
-      redirect '/#{session[:user_id]}/show'
+      redirect "/users/#{@user.id}/show"
     end
-    #takes user params to sign in
-    #if user already exists, redirects to login
-    #if user attempts to login with empty params, raise error and redirect to signup
-    #if successfully signed in, redirect to user profile space
   end
 
+  get '/login' do
+    erb :'users/login'
+  end
+
+
   get '/users/:id/show' do
-    binding.pry
     erb :'users/show'
   end
 
