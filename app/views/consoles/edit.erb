@@ -1,1 +1,17 @@
 <h2>Edit Console</h2>
+<form method="POST" action="/consoles/<%=@console.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  <label for "console_name"> Edit Name</label>
+  <input type="text" name="console_name" id="console_name" value="<%=@console.name%>">
+  <br>
+  <label for "year_purchased">Edit Year Purchased</label>
+  <input type="text" name="year_purchased" id="year_purchased" value="<%=@console.year_purchased%>">
+  <br>
+
+  <label for "year_released">Edit Year Released</label>
+  <input type="text" name="year_released" id="year_released" value="<%=@console.year_released%>">
+  <br>
+  <input type="submit" value="submit" name="Edit Console" id="Edit Console">
+
+</form>
