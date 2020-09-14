@@ -1,0 +1,14 @@
+<li>Console Name: <%=@console.name%></li>
+<li>Year Released: <%=@console.year_released%></li>
+<li>Year Purchased: <%=@console.year_purchased%></li>
+
+<br>
+<br>
+<a href="/consoles/<%=@console.id%>/edit"> Edit Console</a>
+<br>
+<br>
+<p>Delete this Console?</p>
+<form method="POST" action="/consoles/<%=@console.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" id="Delete Console" value="Delete Console">
+</form>

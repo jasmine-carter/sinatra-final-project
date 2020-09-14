@@ -6,7 +6,8 @@
   <%else%>
   <% Console.all.each do |c| %>
     <% if c.user_id == current_user.id %>
-      <li><%= c.name%> </li>
+      <li><%="Name: #{c.name}, Released: #{c.year_released}, Purchased: #{c.year_purchased}"%><li>
   <% end %>
   <% end %>
+  <a href="/consoles/new"> Add Another Console?</a>
   <% end %>

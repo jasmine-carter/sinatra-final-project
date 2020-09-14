@@ -32,4 +32,27 @@ class ConsolesController < ApplicationController
     end
   end
 
+  get '/consoles/:id' do
+    if logged_in?
+      @console = Console.find_by(id: params[:id])
+      erb :'/consoles/show_console'
+    else
+        redirect "/login"
+    end
+  end
+
+
+  get '/consoles/:id/edit' do
+    @console = Console.find_by(id: params[:id])
+    if logged_in?
+      if @console.user_id == current_user.id
+        erb :'consoles/edit'
+      else redirect "/consoles"
+      end
+    else
+      redirect "/login"
+    end
+  end
+
+
 end
