@@ -54,6 +54,18 @@ class ConsolesController < ApplicationController
     end
   end
 
+  patch '/consoles/:id' do
+    binding.pry
+    if params.value?("") || params.value?(" ") || params.value?(nil)
+      flash[:message] = "Your console update must contain valid data"
+      redirect "/consoles/#{params[:id]}/edit"
+    else
+      @console = Console.find_by(id: params[:id])
+      @console.update(name: params[:console_name], year_released: params[:year_released], year_purchased: params[:year_purchased])
+      redirect to "/consoles/#{params[:id]}"
+    end
+  end
+
   delete '/consoles/:id/delete' do
     if logged_in?
       @console = Console.find_by(id: params[:id])
