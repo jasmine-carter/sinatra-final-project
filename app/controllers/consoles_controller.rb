@@ -54,5 +54,17 @@ class ConsolesController < ApplicationController
     end
   end
 
+  delete '/consoles/:id/delete' do
+    if logged_in?
+      @console = Console.find_by(id: params[:id])
+      if current_user.id == @console.user_id
+        @console.delete
+      else
+        redirect "/consoles"
+      end
+    else
+      redirect "/login"
+    end
+  end
 
 end
