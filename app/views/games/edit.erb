@@ -13,6 +13,9 @@
   <label for "review">Edit Your Review</label>
   <textarea id="review" name="review" rows="5" cols="50" wrap="hard" maxlength="400"><%=@game.review%></textarea>
   <br>
+  <br>
   <input type="submit" value="submit" name="Edit Game" id="Edit Game">
 
 </form>
+<br>
+<a href="/games/<%=@game.id%>/edit"> Delete Game</a>

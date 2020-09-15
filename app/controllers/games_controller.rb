@@ -7,6 +7,15 @@ class GamesController < ApplicationController
   #users can delete an individual game they own
   #users can create a game
 
+  get '/games' do
+    if logged_in?
+      @user = User.find_by(id: session[:user_id])
+      erb :'/games/show_all'
+    else
+      redirect "/"
+    end
+  end
+
   get '/games/new' do
     if logged_in?
       erb :'/games/new'
@@ -53,5 +62,19 @@ class GamesController < ApplicationController
       redirect "/games/#{@game.id}"
     end
   end
+
+  delete '/games/:id/delete' do
+    if logged_in?
+      @game = Game.find_by(id: params[:id])
+      if current_user.id == @game.user_id
+        @game.delete
+      else
+        redirect "/games"
+      end
+    else
+      redirect "/login"
+    end
+  end
+
 
 end
