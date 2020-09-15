@@ -15,5 +15,20 @@ class GamesController < ApplicationController
     end
   end
 
+  post '/games/new' do
+    if params[:name] == "" || params[:name]== " "
+      flash[:message]="You must create a game with a valid name."
+      redirect "/games/new"
+    else
+      @game = Game.new(name: params["name"], user_id: session[:user_id], review: params["review"], rating: params["rating"])
+      @game.save
+      redirect "/games/#{@game.id}"
+    end
+  end
+
+  get '/games/:id' do
+    erb :'/games/show'
+  end
+
 
 end
