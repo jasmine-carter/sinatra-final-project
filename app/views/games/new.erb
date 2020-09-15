@@ -1,1 +1,13 @@
-Hey there, create a new game!
+<h1>Add a New Game</h1>
+
+<form method="POST" action="/games/new">
+  <label for "name">Game Name: </label>
+  <input type="text" id="name" name="name">
+  <br>
+  <label for "rating">Rating: </label>
+  <input type="text" id="rating" name="rating">
+  <br>
+  <label for "review">Review: </label>
+  <textarea id="review" name="review" rows="5" cols="50" wrap="hard" maxlength="400">Write your review here!</textarea>
+  <input type="submit" id="submit" value="Save that Game!">
+</form>

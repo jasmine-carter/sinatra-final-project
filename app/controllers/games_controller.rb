@@ -8,7 +8,11 @@ class GamesController < ApplicationController
   #users can create a game
 
   get '/games/new' do
-    erb :'/games/new'
+    if logged_in?
+      erb :'/games/new'
+    else
+      redirect "/login"
+    end
   end
 
 
