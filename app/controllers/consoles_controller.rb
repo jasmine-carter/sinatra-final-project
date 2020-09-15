@@ -55,7 +55,6 @@ class ConsolesController < ApplicationController
   end
 
   patch '/consoles/:id' do
-    binding.pry
     if params.value?("") || params.value?(" ") || params.value?(nil)
       flash[:message] = "Your console update must contain valid data"
       redirect "/consoles/#{params[:id]}/edit"
