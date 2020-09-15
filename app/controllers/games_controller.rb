@@ -27,7 +27,7 @@ class GamesController < ApplicationController
   end
 
   get '/games/:id' do
-    erb :'/games/show'
+    erb :'/games/show_game'
   end
 
 
