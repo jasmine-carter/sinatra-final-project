@@ -32,14 +32,25 @@ class GamesController < ApplicationController
   end
 
   get '/games/:id/edit' do
-    @game = Game.find_by(id: params[:id])
     if logged_in?
+      @game = Game.find_by(id: params[:id])
       if @game.user_id == current_user.id
         erb :'games/edit'
       else redirect "/games"
       end
     else
       redirect "/login"
+    end
+  end
+
+  patch '/games/:id' do
+    if params[:name] == "" || params[:name] == " "
+      flash[:message] = "Your game must have a valid name."
+      redirect "/games/:id/edit"
+    else
+      @game = Game.find_by(id: params[:id])
+      @game.update(name: params[:name], review: params[:review], rating: params[:rating])
+      redirect "/games/#{@game.id}"
     end
   end
 
