@@ -37,7 +37,10 @@ class UsersController < ApplicationController
 
   post '/login' do
     @user = User.find_by(username: params[:username])
-    if @user.id != nil && @user.authenticate(params[:password])
+    if @user == nil
+      flash[:message] = "You don't have an account, please sign up."
+      redirect "/signup"
+    elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}/show"
     else
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.clear
-      redirect "/login"
+      redirect "/"
     else
       redirect "/"
     end
