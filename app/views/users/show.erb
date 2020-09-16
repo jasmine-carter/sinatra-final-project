@@ -1,9 +1,23 @@
-<h1>Oh Hello there, <%=current_user.username%>! Welcome to Your Profile</h1>
-
-#here is a section that lists all of the users consoles
-
-#here is a section that lists all of the users games
-
-<a href="/consoles/new">Add a new console! </a>
+<h2 style="text-align:center">Oh Hello there, <%=current_user.username%>! Welcome to Your Profile</h2>
+<body>
+<div style="text-align:center">
+  <div>
+    <pre>
+    /\                                                              /\
+    /__\============================================================/__\
+    /\  /\            IT'S DANGEROUS TO GO ALONE                    /\  /\
+    /__\/__\========================================================/__\/__\
+</pre>
 <br>
-<a href="/games/new">Add a new game! </a>
+  </div>
+  <a href="/games"> See all of your games!</a>
+  <br>
+  <a href="/consoles"> See all of your consoles! </a>
+  </div>
+  <br>
+  <div style="text-align:center">
+  <a href="/consoles/new">Add a new console! </a>
+  <br>
+  <a href="/games/new">Add a new game! </a>
+  </div>
+</body>
