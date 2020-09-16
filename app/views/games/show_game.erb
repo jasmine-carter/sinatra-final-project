@@ -9,8 +9,9 @@
 <a href="/games/<%=@game.id%>/edit"> Edit Game</a>
 <br>
 <br>
-<p>Delete This Game?</p>
 <form method="POST" action="/games/<%=@game.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" id="Delete Game" value="Delete Game">
 </form>
+<br>
+<a href="/games">Back to Your Games</a>

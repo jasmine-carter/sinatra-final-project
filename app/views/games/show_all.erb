@@ -1,8 +1,6 @@
 <h2>Hey look at all of your games, <%=current_user.username%>!</h2>
-
-<% if current_user.games == 0%>
-<p>It looks like you don't have any games. Why don't you add one to your library?</p>
-<a href="/games/new">Create a Game</a>
+<% if current_user.games.count == 0 %>
+  <p>It looks like you don't have any games. Why don't you <a href="/games/new">add one</a> to your library?</p>
   <%else%>
   <% Game.all.each do |g| %>
     <% if g.user_id == current_user.id %>
