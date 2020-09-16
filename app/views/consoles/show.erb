@@ -1,12 +1,12 @@
 <h2>Hi, <%= current_user.username %> </h2>
 
 <% if current_user.consoles == []%>
-<p>It looks like you don't have any consoles. Why don't you add one?</p>
-<a href="/consoles/new">Create a Console</a>
+<p>It looks like you don't have any consoles yet. Why don't you <a href="/consoles/new"> add one?</a></p>
+
   <%else%>
   <% Console.all.each do |c| %>
     <% if c.user_id == current_user.id %>
-      <li> <a href="/consoles/<%=c.id%>"> <%=c.name%></a>  Released: <%=c.year_released%> Purchased: <%=c.year_purchased%></li>
+      <li> <a href="/consoles/<%=c.id%>"> <%=c.name%></a></li>
   <% end %>
   <% end %>
   <br>
