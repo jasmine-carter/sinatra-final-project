@@ -70,6 +70,8 @@ class ConsolesController < ApplicationController
       @console = Console.find_by(id: params[:id])
       if current_user.id == @console.user_id
         @console.delete
+        flash[:message]="Successfully deleted this console."
+        redirect "/consoles"
       else
         redirect "/consoles"
       end
