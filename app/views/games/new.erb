@@ -2,10 +2,10 @@
 
 <form method="POST" action="/games/new">
   <label for "name">Game Name: </label>
-  <input type="text" id="name" name="name" required>
+  <input type="text" id="name" name="name" placeholder="Enter game's name" required>
   <br>
   <label for "rating">Rating: </label>
-  <input type="text" id="rating" name="rating">
+  <input type="text" id="rating" name="rating" placeholder="Rate from 00-10" pattern="(?![1-9][1-9]|\d{3,})\d\S+" title="Enter 2-digit rating">
   <br>
   <label for "review">Review: </label>
   <textarea id="review" name="review" rows="5" cols="50" wrap="hard" maxlength="400">Write your review here!</textarea>
