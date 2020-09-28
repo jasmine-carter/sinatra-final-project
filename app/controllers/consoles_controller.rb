@@ -1,20 +1,14 @@
+require 'rack-flash'
 class ConsolesController < ApplicationController
   use Rack::Flash
 
-  #allows you to view all consoles by users
-  #allows you to view a console by users
-  #allows you to delete a console owned by user
-  #allows you to edit a console owned by user
-
   get '/consoles' do
-    #don't allow a non logged in user to view this page.
     if logged_in?
       erb :'consoles/show'
     else
+      flash[:message] = "You must be logged in to view this page."
       redirect '/users/signup'
     end
-    #will show all consoles by user
-    #will have links to create consoles
   end
 
   get '/consoles/new' do
