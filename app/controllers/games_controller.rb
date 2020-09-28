@@ -1,3 +1,4 @@
+require 'rack-flash'
 class GamesController < ApplicationController
   use Rack::Flash
 
@@ -27,6 +28,7 @@ class GamesController < ApplicationController
   post '/games/new' do
     if params[:name] == "" || params[:name]== " "
       flash[:message]="You must create a game with a valid name."
+      binding.pry
       redirect "/games/new"
     else
       @game = Game.new(name: params["name"], user_id: session[:user_id], review: params["review"], rating: params["rating"])
@@ -54,8 +56,9 @@ class GamesController < ApplicationController
 
   patch '/games/:id' do
     if params[:name] == "" || params[:name] == " "
+      binding.pry
       flash[:message] = "Your game must have a valid name."
-      redirect "/games/:id/edit"
+      redirect "/games/#{@game.id}/edit"
     else
       @game = Game.find_by(id: params[:id])
       @game.update(name: params[:name], review: params[:review], rating: params[:rating])
