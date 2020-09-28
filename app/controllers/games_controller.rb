@@ -55,7 +55,7 @@ class GamesController < ApplicationController
   end
 
   patch '/games/:id' do
-    if params[:name] == "" || params[:name] == " "
+  if params.value?("") || params.value?(" ") || params.value?(nil)
       binding.pry
       flash[:message] = "Your game must have a valid name."
       redirect "/games/#{@game.id}/edit"
