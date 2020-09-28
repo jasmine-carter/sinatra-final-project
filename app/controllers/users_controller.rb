@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    #binding.pry
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       flash[:message] = "Please register with a Username, Email, and Password"
       redirect "/signup"

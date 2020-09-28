@@ -1,5 +1,11 @@
 <h2>Sign up for Console Keeper<h2>
 
+<div><p style="{color:red;}">
+<% if flash.has?(:message) %>
+<p style="{color:red;}"><%=flash[:message]%></p>
+<%end %>
+</div>
+
 <div class="container">
   <form method="post" action="/signup">
     <label for "username">Enter Your Name:</label>
