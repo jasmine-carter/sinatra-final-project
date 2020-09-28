@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+    if params.value?("") || params.value?(" ") || params.value?(nil)
       flash[:message] = "Please register with a Username, Email, and Password"
       redirect "/signup"
     else
